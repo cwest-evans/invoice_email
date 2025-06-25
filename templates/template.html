@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header img {
+            max-height: 50px;
+        }
+
+        .header-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #111;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .pbi-button {
+            background-color: #981E32;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 18px;
+            background-color: #f0f0f0;
+            padding: 8px 12px;
+            border-left: 4px solid #981E32;
+            margin-top: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 12px;
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: right;
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left;
+        }
+
+        th {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+
+        .total-row td {
+            font-weight: bold;
+            background-color: #f9f9f9;
+            border-top: 2px solid #888;
+        }
+
+        span[style*="red"] {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header with logo and title -->
+    <div class="header">
+        <div class="header-left">
+            <img src="https://evansgc.sharepoint.com/intranet/_api/siteiconmanager/getsitelogo?type=%271%27"
+                alt="Company Logo">
+            <h1>Project Summary | {{ title }}</h1>
+        </div>
+        <div class="header-center">
+
+        </div>
+        <div class="header-right">
+            <a href="https://app.powerbi.com/groups/8a992f55-e347-4532-863a-dea9c1fb9ce7/reports/2d661e95-3458-4b43-8561-23ca2aaded64/030e0ebea4107e9adf70?experience=power-bi"
+                class="pbi-button" target="_blank">
+                Projection Coversheet ↗
+            </a>
+        </div>
+    </div>
+
+    {% for title, table_html in tables %}
+    <h2>{{ title }}</h2>
+    {{ table_html | safe }}
+    {% endfor %}
+
+
+</body>
+
+</html>
