@@ -7,21 +7,20 @@ from jinja2 import Environment, FileSystemLoader
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # SQL Server connection settings
 conn_str = (
-    "DRIVER={ODBC Driver 17 for SQL Server};"
-    "SERVER=10.150.29.4;"
-    "DATABASE=Viewpoint;"
-    "UID=cwest.sql;"
-    "PWD=Bluepony12"
+    f"DRIVER={{{os.getenv('SQL_DRIVER')}}};"
+    f"SERVER={os.getenv('SQL_SERVER')};"
+    f"DATABASE={os.getenv('SQL_DATABASE')};"
+    f"UID={os.getenv('SQL_UID')};"
+    f"PWD={os.getenv('SQL_PWD')};"
 )
+
 conn = pyodbc.connect(conn_str)
-
-from collections import defaultdict, OrderedDict
-from jinja2 import Environment, FileSystemLoader
-import pandas as pd
-
 
 # ---- Load SQL queries ----
 def load_sql(filename):
