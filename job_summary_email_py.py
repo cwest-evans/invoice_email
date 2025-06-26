@@ -8,6 +8,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import datetime
 from dotenv import load_dotenv
+import msal
+import requests
+
 
 load_dotenv()
 
@@ -21,6 +24,58 @@ conn_str = (
 )
 
 conn = pyodbc.connect(conn_str)
+
+# ----- Authenticate with Microsoft Graph API -----
+def send_email_via_graph(to_address, subject, html_body):
+    client_id = os.getenv("GRAPH_CLIENT_ID")
+    tenant_id = os.getenv("GRAPH_TENANT_ID")
+    client_secret = os.getenv("GRAPH_CLIENT_SECRET")
+    sender = os.getenv("GRAPH_SENDER")
+
+    authority = f"https://login.microsoftonline.com/{tenant_id}"
+    scopes = ["https://graph.microsoft.com/.default"]
+
+    app = msal.ConfidentialClientApplication(
+        client_id, authority=authority, client_credential=client_secret
+    )
+
+    token = app.acquire_token_for_client(scopes=scopes)
+    if "access_token" not in token:
+        raise Exception(f"Token acquisition failed: {token.get('error_description')}")
+
+    email_payload = {
+        "message": {
+            "subject": subject,
+            "body": {
+                "contentType": "HTML",
+                "content": html_body
+            },
+            "toRecipients": [
+                {
+                    "emailAddress": {
+                        "address": to_address
+                    }
+                }
+            ]
+        },
+        "saveToSentItems": "true"
+    }
+
+    headers = {
+        "Authorization": f"Bearer {token['access_token']}",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(
+        "https://graph.microsoft.com/v1.0/users/" + sender + "/sendMail",
+        headers=headers,
+        json=email_payload
+    )
+
+    if response.status_code != 202:
+        raise Exception(f"Graph sendMail failed: {response.status_code} - {response.text}")
+
+
 
 # ---- Load SQL queries ----
 def load_sql(filename):
@@ -51,6 +106,14 @@ email_to_projects = roster_df.groupby("EMail")["Project"].apply(list).to_dict()
 # Set up Jinja2 template environment
 env = Environment(loader=FileSystemLoader("templates"))
 template = env.get_template("template.html")
+
+test_row = {
+    "Project": "24-2902",
+    "EMail": "cwest@evans-gc.com",
+    "Name": "Test User",
+    "TitleGroup": "PM"
+}
+roster_df = pd.DataFrame([test_row])
 
 for _, row in roster_df.iterrows():
     project_id = row["Project"]
@@ -129,7 +192,12 @@ for _, row in roster_df.iterrows():
     filename = (
         f"preview_{project_id}_{email.replace('@', '_at_').replace('.', '_')}.html"
     )
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(html_output)
+    
+    #with open(filename, "w", encoding="utf-8") as f:
+    #    f.write(html_output)
 
-    print(f"Saved preview for {name} ({email}) — Project {project_id}")
+    subject = f"{project_id} – Project Health Summary"
+    send_email_via_graph(email, subject, html_output)
+    print(f"✅ Email sent to {name} ({email}) — Project {project_id}")
+    
+    #print(f"Saved preview for {name} ({email}) — Project {project_id}")
