@@ -113,26 +113,33 @@
 
                         <!-- Title -->
                         <td valign="middle" style="font-size: 22px; font-weight: bold; color: #111; border: none;">
-                            Project Summary | {{ title }}
+                            {{ title }} | {{ date_today }}
                         </td>
+
                     </tr>
                 </table>
             </td>
         </tr>
     </table>
 
+    <p style="font-size: 13px; color: #555; text-align: center;">
+    Showing 20 of {{ total_count }} invoices. 
+    <a href="{{ csv_link }}" style="color: #981E32;">Click here to download full list ↘</a>
+</p>
+
+
     <!-- CTA Button -->
-    <table width="100%" cellpadding="0" cellspacing="0" style="margin: 40px 0; border: none;">
+    <!-- Download CSV Button -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin: 20px 0; border: none;">
         <tr>
             <td align="center">
                 <table cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border: none;">
                     <tr>
                         <td bgcolor="#981E32"
-                            style="border-radius: 6px; padding: 14px 28px; text-align: center; border: none;">
-                            <a href="https://forms.office.com/r/FRxdbqh5iF"
-                                style="color: #ffffff; font-size: 16px; font-family: Segoe UI, sans-serif;
-                      text-decoration: none; display: inline-block; border: none;">
-                                Submit Weekly Update ↗
+                            style="border-radius: 2px; padding: 14px 28px; text-align: center; border: none;">
+                            <a href="{{ csv_link }}" style="color: #ffffff; font-size: 16px; font-family: Segoe UI, sans-serif;
+               text-decoration: none; display: inline-block; border: none;">
+                                Download CSV ↘
                             </a>
                         </td>
                     </tr>
@@ -140,6 +147,7 @@
             </td>
         </tr>
     </table>
+
 
     <!-- Financial Tables -->
     {% for title, table_html in tables %}
@@ -148,26 +156,6 @@
     </h2>
     {{ table_html | safe }}
     {% endfor %}
-
-    <!-- Bottom CTA Button -->
-    <table width="100%" cellpadding="0" cellspacing="0" style="margin: 40px 0; border: none;">
-        <tr>
-            <td align="center">
-                <table cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border: none;">
-                    <tr>
-                        <td bgcolor="#981E32"
-                            style="border-radius: 6px; padding: 14px 28px; text-align: center; border: none;">
-                            <a href="https://forms.office.com/r/FRxdbqh5iF"
-                                style="color: #ffffff; font-size: 16px; font-family: Segoe UI, sans-serif;
-                      text-decoration: none; display: inline-block; border: none;">
-                                Submit Weekly Update ↗
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
 
 
 </body>
