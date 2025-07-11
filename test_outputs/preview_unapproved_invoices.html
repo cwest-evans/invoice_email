@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header img {
+            max-height: 50px;
+        }
+
+        .header-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #111;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .pbi-button {
+            background-color: #981E32;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 18px;
+            background-color: #f0f0f0;
+            padding: 8px 12px;
+            border-left: 4px solid #981E32;
+            margin-top: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 12px;
+        }
+
+        th,
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: right;
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left;
+        }
+
+        th {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+
+        .total-row td {
+            font-weight: bold;
+            background-color: #f9f9f9;
+            border-top: 2px solid #888;
+        }
+
+        span[style*="red"] {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Table -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0"
+        style="margin-bottom: 10px; font-family: Segoe UI, Tahoma, sans-serif; border: none;">
+        <tr>
+            <td align="left" style="padding: 10px 0;">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border: none;">
+                    <tr>
+                        <!-- Logo -->
+                        <td valign="middle" style="width: 100px; padding-right: 20px; border: none;">
+                            <img src="https://evansgeneralcontractors.com/wp-content/uploads/2024/04/evans_logo_red-white.png"
+                                alt="Company Logo" style="max-width: 100px; height: auto; border: none;">
+                        </td>
+
+                        <!-- Title -->
+                        <td valign="middle" style="font-size: 22px; font-weight: bold; color: #111; border: none;">
+                            Unapproved Invoices | 07/11/2025
+                        </td>
+
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <p style="font-size: 13px; color: #555; text-align: center;">
+    Showing 20 of 167 invoices. 
+    <a href="test" style="color: #981E32;">Click here to download full list ↘</a>
+</p>
+
+
+    <!-- CTA Button -->
+    <!-- Download CSV Button -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin: 20px 0; border: none;">
+        <tr>
+            <td align="center">
+                <table cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; border: none;">
+                    <tr>
+                        <td bgcolor="#981E32"
+                            style="border-radius: 2px; padding: 14px 28px; text-align: center; border: none;">
+                            <a href="test" style="color: #ffffff; font-size: 16px; font-family: Segoe UI, sans-serif;
+               text-decoration: none; display: inline-block; border: none;">
+                                Download CSV ↘
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+
+    <!-- Financial Tables -->
+    
+    <h2 style="margin: 30px 0 10px 0; font-family: Segoe UI, Tahoma, sans-serif; border: none;">
+        Top 20 Unapproved Invoices (Older than 7 Days)
+    </h2>
+    <table border='0' cellpadding='0' cellspacing='0' style='border-collapse:collapse; width: 100%; font-size: 14px;'>
+<thead>
+<tr>
+    <th align="left" style="background-color: #e0e0e0; padding: 10px 12px;">Reviewer</th>
+    <th align="left" style="background-color: #e0e0e0; padding: 10px 12px;">Job</th>
+    <th align="left" style="background-color: #e0e0e0; padding: 10px 12px;">Date Assigned</th>
+    <th align="left" style="background-color: #e0e0e0; padding: 10px 12px;">Invoice Date</th>
+    <th align="left" style="background-color: #e0e0e0; padding: 10px 12px;">Vendor Name</th>
+    <th align="right" style="background-color: #e0e0e0; padding: 10px 12px;">Invoice Line Total</th>
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+        <td style="padding: 10px 12px;">John Webb</td>
+        <td style="padding: 10px 12px;">25-2983</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">06/24/2025</td>
+        <td style="padding: 10px 12px;">Jessica Mae Beavers dba Jesse Beavers Cleaning Gypsy</td>
+        <td align="right" style="padding: 10px 12px;">$1,260.00</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">John Webb</td>
+        <td style="padding: 10px 12px;">25-2983</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">06/25/2025</td>
+        <td style="padding: 10px 12px;">Jessica Mae Beavers dba Jesse Beavers Cleaning Gypsy</td>
+        <td align="right" style="padding: 10px 12px;">$535.00</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Robert Gutierrez</td>
+        <td style="padding: 10px 12px;">24-2916</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">06/30/2025</td>
+        <td style="padding: 10px 12px;">BC Industrial Supply, Inc</td>
+        <td align="right" style="padding: 10px 12px;">$75.98</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Conrad Moseley-Brown</td>
+        <td style="padding: 10px 12px;">23-2814</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">06/30/2025</td>
+        <td style="padding: 10px 12px;">All-South Subcontractors, Inc.</td>
+        <td align="right" style="padding: 10px 12px;">$1,129.36</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Nick Allgeyer</td>
+        <td style="padding: 10px 12px;">24-2912</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">06/30/2025</td>
+        <td style="padding: 10px 12px;">Atlas Flags, Inc.</td>
+        <td align="right" style="padding: 10px 12px;">$1,410.00</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Jacob Rakosi</td>
+        <td style="padding: 10px 12px;">24-2883</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/02/2025</td>
+        <td style="padding: 10px 12px;">Williams Scotsman Inc</td>
+        <td align="right" style="padding: 10px 12px;">$208.44</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Cole Price</td>
+        <td style="padding: 10px 12px;">22-2791</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">Green Nozzle Solutions, LLC</td>
+        <td align="right" style="padding: 10px 12px;">$492.52</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Cole Price</td>
+        <td style="padding: 10px 12px;">22-2791</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">Green Nozzle Solutions, LLC</td>
+        <td align="right" style="padding: 10px 12px;">$715.08</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Gary Rudder</td>
+        <td style="padding: 10px 12px;">24-2898</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/02/2025</td>
+        <td style="padding: 10px 12px;">Williams Scotsman Inc</td>
+        <td align="right" style="padding: 10px 12px;">$288.79</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Barron Knight</td>
+        <td style="padding: 10px 12px;">25-2997</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/01/2025</td>
+        <td style="padding: 10px 12px;">United Rentals Inc</td>
+        <td align="right" style="padding: 10px 12px;">$369.15</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Jacob Rakosi</td>
+        <td style="padding: 10px 12px;">25-2992</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/01/2025</td>
+        <td style="padding: 10px 12px;">United Rentals Inc</td>
+        <td align="right" style="padding: 10px 12px;">$229.50</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Nick Allgeyer</td>
+        <td style="padding: 10px 12px;">24-2912</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/02/2025</td>
+        <td style="padding: 10px 12px;">Heyden Supply</td>
+        <td align="right" style="padding: 10px 12px;">$47.16</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Cory Case</td>
+        <td style="padding: 10px 12px;">23-2863</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/02/2025</td>
+        <td style="padding: 10px 12px;">ADM Rolloff LLC</td>
+        <td align="right" style="padding: 10px 12px;">$1,250.00</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Gary Rudder</td>
+        <td style="padding: 10px 12px;">25-2981</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">ARC Document Solutions LLC</td>
+        <td align="right" style="padding: 10px 12px;">$73.30</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Nick Allgeyer</td>
+        <td style="padding: 10px 12px;">24-2912</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">06/30/2025</td>
+        <td style="padding: 10px 12px;">Meridian Waste SC, LLC, dba ECO Waste</td>
+        <td align="right" style="padding: 10px 12px;">$4,872.00</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Barron Knight</td>
+        <td style="padding: 10px 12px;">25-2997</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">06/30/2025</td>
+        <td style="padding: 10px 12px;">Richa Graphics</td>
+        <td align="right" style="padding: 10px 12px;">$9,309.30</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Cory Case</td>
+        <td style="padding: 10px 12px;">23-2863</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">06/29/2025</td>
+        <td style="padding: 10px 12px;">Staff Zone</td>
+        <td align="right" style="padding: 10px 12px;">$2,486.85</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Gary Rudder</td>
+        <td style="padding: 10px 12px;">24-2880</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">06/30/2025</td>
+        <td style="padding: 10px 12px;">ECO Waste Services, Inc.</td>
+        <td align="right" style="padding: 10px 12px;">$2,245.60</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Mahmood Hoos Ali</td>
+        <td style="padding: 10px 12px;">23-2833</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/01/2025</td>
+        <td style="padding: 10px 12px;">Walthal Oil Company </td>
+        <td align="right" style="padding: 10px 12px;">$540.00</td>
+    </tr>
+    
+    <tr>
+        <td style="padding: 10px 12px;">Jason Harbison</td>
+        <td style="padding: 10px 12px;">24-2973</td>
+        <td style="padding: 10px 12px;">07/03/2025</td>
+        <td style="padding: 10px 12px;">07/02/2025</td>
+        <td style="padding: 10px 12px;">Peachtree Waste, LLC</td>
+        <td align="right" style="padding: 10px 12px;">$609.00</td>
+    </tr>
+    </tbody></table>
+    
+
+
+</body>
+
+</html>

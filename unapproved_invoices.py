@@ -77,6 +77,12 @@ def load_sql(filename):
 
 
 invoice_query = load_sql("unapproved_invoices.sql")
+
+# Generate timestamp
+timestamp = datetime.now().strftime("%Y%m%d")
+
+
+
 # Load and format data
 invoice_df = pd.read_sql(invoice_query, conn)
 invoice_df["Invoice Line Total"] = invoice_df["Invoice Line Total"].apply(
@@ -88,6 +94,13 @@ invoice_df["Date Assigned"] = pd.to_datetime(invoice_df["Date Assigned"]).dt.str
 invoice_df["Invoice Date"] = pd.to_datetime(invoice_df["Invoice Date"]).dt.strftime(
     "%m/%d/%Y"
 )
+
+# Construct filename with timestamp
+csv_filename = f"unapproved_invoices_{timestamp}.csv"
+csv_output_path = os.path.join("test_outputs", csv_filename)
+
+# Save CSV
+invoice_df.to_csv(csv_output_path, index=False)
 
 # Extract the top 20 rows (or whatever preview size you want)
 invoice_preview_df = invoice_df.head(20)
